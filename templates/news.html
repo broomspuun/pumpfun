@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новости</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-
+    <header>
+        <h1>Новости проекта</h1>
+        <nav>
+            <a href="/">Главная</a> |
+            <a href="/token_info">Информация о токене</a> |
+            <a href="/news">Новости</a>
+        </nav>
+    </header>
+    <section>
+        <h2>Новости</h2>
+        {% for item in news %}
+            <article>
+                <h3>{{ item['title'] }}</h3>
+                <p><em>{{ item['date'] }}</em></p>
+                <p>{{ item['content'] }}</p>
+            </article>
+        {% endfor %}
+    </section>
 </body>
 </html>
